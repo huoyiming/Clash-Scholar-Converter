@@ -41,7 +41,7 @@ async def convert(request: Request):
     if 'proxy-groups' not in raw_sub:
         return {"error": "No proxy-groups found in the subscription."}
     scholar_proxies = raw_sub['proxy-groups'][0]['proxies'].copy()
-    scholar_proxies.insert(0, proxy['name'])
+    scholar_proxies[:0] = [proxy['name'],'DIRECT']
     raw_sub['proxy-groups'].insert(1,{
         'name': 'Scholar',
         'type': 'select',
