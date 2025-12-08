@@ -15,22 +15,19 @@ proxy = {
     'port': 14514,
 }
 
-headers = {
-    "User-Agent": 'clash'
-}
-
 # Set your base URL here if needed
 base_url = ''
 
 @app.get("/api")
 async def convert(request: Request):
     url = base_url + request.scope['query_string'].decode()[4:]
+    headers = {"User-Agent": request.headers.get("User-Agent", "clash")}
     try:
         async with aiohttp.ClientSession() as session:
             async with session.get(list_url) as response:
                 list_file = await response.text()
                 sci_list = [i for i in list_file.splitlines() if i.strip() and not i.startswith("#")]
-            async with session.get(url) as response:
+            async with session.get(url, headers=headers) as response:
                 raw_sub = yaml.safe_load(await response.text())
                 raw_headers = response.headers
     except Exception as e:
