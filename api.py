@@ -6,7 +6,7 @@ import yaml
 app = FastAPI()
 
 # 分流列表
-list_url = "https://res.eming.fun/SCC/sci.list"
+list_url = "https://raw.githubusercontent.com/huoyiming/Clash-Scholar-Converter/refs/heads/main/sci.list"
 # 分流节点
 proxy = {
     'name': 'xxx-university',
