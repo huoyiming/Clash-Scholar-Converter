@@ -38,3 +38,4 @@ DOMAIN-SUFFIX,duxiu.com
 
 # SZU
 DOMAIN-SUFFIX,szu.edu.cn
+IP-CIDR,172.31.0.0/16
